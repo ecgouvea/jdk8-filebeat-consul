@@ -37,11 +37,11 @@ filebeat.prospectors:
 
 # The name of the shipper that publishes the network data. It can be used to group
 # all the transactions sent by a single shipper in the web interface.
-name: ${APPLICATION_NAME:unknown}
+name: ${FILEBEAT_SHIPPER:unknown}
 
 # The tags of the shipper are included in their own field with each
 # transaction published.
-tags: ["microservices"]
+tags: ${FILEBEAT_TAGS:unknown}
 
 # Optional fields that you can specify to add additional information to the
 # output.
@@ -59,7 +59,7 @@ output.logstash:
   enabled: true
 
   # The Logstash hosts
-  hosts: ["kroton-elk:5044"]
+  hosts: '${FILEBEAT_HOSTS:unknown}'
 
   # Number of workers per Logstash host.
   worker: 1
@@ -69,7 +69,7 @@ output.logstash:
 
   # Optional index name. The default index name is set to name of the beat
   # in all lowercase.
-  index: 'puc'
+  index: '${FILEBEAT_INDEX:unknown}'
 
 #================================ Logging ======================================
 # There are three options for the log output: syslog, file, stderr.

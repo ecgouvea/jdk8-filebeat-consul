@@ -1,0 +1,7 @@
+logging:
+  file: ./logs/service.log
+  level:
+    root: error
+    sample.app: debug
+  pattern:
+    file: "[%d{ISO8601}] %-5level %-40.40c{1.} : %m%ex%n"

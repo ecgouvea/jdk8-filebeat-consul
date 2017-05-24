@@ -24,11 +24,11 @@ RUN rm /etc/localtime \
     && ln -s /usr/share/zoneinfo/America/Sao_Paulo /etc/localtime
 
 # Application specific
-ENV APPLICATION_NAME "unknown"
 WORKDIR /app
 RUN mkdir data \
     && mkdir logs
 ADD app.jar app.jar
+ADD application.yml application.yml
 ADD filebeat* /app/
 ADD docker-entrypoint.sh /app/
 
