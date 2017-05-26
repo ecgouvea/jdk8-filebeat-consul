@@ -22,10 +22,9 @@ RUN mkdir -p /app/data \
     && echo "pt_BR.UTF-8 UTF-8" > /etc/locale.gen \
     && locale-gen pt_BR.UTF-8 \
     && rm /etc/localtime \
-    && apt-get clean \
     && ln -s /usr/share/zoneinfo/America/Sao_Paulo /etc/localtime \
-    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
-    && find /var/cache -maxdepth 1 -mindepth 1 -type d | xargs -n1 rm -Rf \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /var/cache/* \
     # Filebeat Configuration
     && wget --no-check-certificate https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-${FILEBEAT_VERSION}-linux-x86_64.tar.gz \
     && tar -zxvf /app/filebeat-${FILEBEAT_VERSION}-linux-x86_64.tar.gz \
